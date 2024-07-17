@@ -1,0 +1,28 @@
+create database AZTextiles;
+
+show databases;
+
+use AZTextiles;
+
+create table stockk (P_Code int not null primary key,
+P_Name varchar(30) not null,P_Size varchar(30),P_Price int not null,Total_Qty int not null,
+qty int,Balance_Stock int generated always as (Total_Qty-qty));
+
+insert into stockk (P_Code,P_Name,P_Size,P_Price,Total_Qty) values 
+(101,'Shirt     ','s  ',300,100),(102,'Shirt     ','m  ',350,110),(103,'Shirt     ','l  ',400,140),(104,'Shirt     ','xl ',450,170),(105,'Shirt     ','xxl',500,140),
+(201,'Jeans     ','32 ',450,200),(202,'Jeans     ','34 ',500,110),(203,'Jeans     ','36 ',550,140),(204,'Jeans     ','38 ',600,170),(205,'Jeans     ','40 ',650,140),
+(301,'T-Shirt   ','s  ',180,200),(302,'T-Shirt   ','m  ',200,110),(303,'T-Shirt   ','l  ',220,140),(304,'T-Shirt   ','xl ',300,170),(305,'T-Shirt   ','xxl',330,140),
+(401,'Saree     ','   ',400,200),(402,'Saree     ','   ',550,110),(403,'Saree     ','   ',600,140),(404,'Saree     ','   ',800,170),(405,'Saree     ','   ',900,140);
+select *from stockk;
+
+create table login(userid varchar(30),password varchar(30));
+insert into login values ('az01','anser101');
+select *from login;
+
+create table billlogin(userid varchar(30),password varchar(30));
+insert into billlogin values ('b01','anser101');
+select *from billlogin;
+
+Create table GeneralBill (Billno int,PCode int,PName varchar(30),PPrice int,Qty int,TotalAmount int generated always as (PPrice * Qty));
+select *from GeneralBill;
+
